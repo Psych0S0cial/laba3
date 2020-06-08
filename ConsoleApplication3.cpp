@@ -289,10 +289,12 @@ private:
 			return;
 		file >> alph;
 		file.close();
+
 		for (int i = 0; i < alph.at("alph").size(); i++)
 		{
-			alph2 += alph.at("alph").at(i);
+			alph2 += alph.at("alph").at(i);//переписать в строку
 		}
+
 		for (int i = 0; i < alph2.size(); i++)
 		{
 			if (alph2.size() == alph.at("alph").size())
@@ -411,7 +413,6 @@ private:
 		return;
 	}
 };
-
 class transposition : public chiper
 {
 private:
@@ -529,7 +530,7 @@ private:
 		vector<int>key;
 		for (int i = 0; i < keyj.at("key").size(); i++)
 		{
-			key.push_back(keyj.at("key").at(i));
+			key.push_back(keyj.at("key").at(i));//перезап клю
 		}
 
 		string userword;
@@ -547,7 +548,7 @@ private:
 			{
 				return;
 			}
-			if (blocksize == userword.size())
+			if (blocksize == userword.size())//
 			{
 				encryptword.resize(blocksize);
 				for (int i = 0; i < encryptword.size(); i++)
@@ -1344,16 +1345,37 @@ int main()
 		cout << ">> Главное меню:" << endl << ">>    1) Зашифровать/Расшифровать" << endl << ">>    2) Сгенерировать ключ" << endl << ">> Ваш выбор: ";
 		string x;
 		getline(cin, x);
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
+
+
 		if (x[0] == '1' && x.size() == 1)
 		{
 			cout << ">> Зашифровать/Расшифровать:" << endl << ">>    1) Зашифровать " << endl << ">>    2) Расшифровать" << endl << ">> Ваш выбор: ";
 			string q;
 			getline(cin, q);
+			if (cin.fail())
+			{
+				cin.clear();
+				cin.ignore(256, '\n');
+			}
+
+
 			if (q[0] == '1' && q.size() == 1)
 			{
 				cout << ">> Выберите метод шифрования:" << endl << ">>    1) Шифр замены" << endl << ">>    2) Шифр перестановки" << endl << ">>    3) Шифр гаммирования" << endl << ">> Ваш выбор: ";
 				string z;
 				getline(cin, z);
+				if (cin.fail())
+				{
+					cin.clear();
+					cin.ignore(256, '\n');
+				}
+
+
 				if (z[0] == '1' && z.size() == 1)
 				{
 					in.encrypt(&re);
@@ -1378,6 +1400,13 @@ int main()
 				cout << ">> Выберите метод шифрования:" << endl << ">>    1) Шифр замены " << endl << ">>    2) Шифр перестановки" << endl << ">>    3) Шифр гаммирования" << endl << ">> Ваш выбор: ";
 				string a;
 				getline(cin, a);
+				if (cin.fail())
+				{
+					cin.clear();
+					cin.ignore(256, '\n');
+				}
+
+
 				if (a[0] == '1' && a.size() == 1)
 				{
 					in.decrypt(&re);
@@ -1406,6 +1435,13 @@ int main()
 			cout << ">> Ваш выбор: ";
 			string y;
 			getline(cin, y);
+			if (cin.fail())
+			{
+				cin.clear();
+				cin.ignore(256, '\n');
+			}
+
+
 			if (y[0] == '1' && y.size() == 1)
 			{
 				in.key_generation(&re);
@@ -1430,10 +1466,5 @@ int main()
 		}
 		_getche();
 		system("cls");
-		//cin.ignore(1, '\n');
-
 	}
-
-
-
 }
